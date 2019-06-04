@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TestApp extends Application {
@@ -14,6 +15,8 @@ public class TestApp extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		Button btn = new Button("click me");
+		Button exit = new Button("Exit");
+		exit.setOnAction(e -> System.exit(0));
 		
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 			
@@ -23,10 +26,11 @@ public class TestApp extends Application {
 			}
 		});
 		
-		StackPane sp = new StackPane();
-		sp.getChildren().add(btn);
+		VBox vb = new VBox();
+		//StackPane sp = new StackPane();
+		vb.getChildren().addAll(btn,exit);
 		
-		Scene scene = new Scene(sp,600,500);
+		Scene scene = new Scene(vb,600,500);
 		primaryStage.setScene(scene);
 		
 		primaryStage.show();
